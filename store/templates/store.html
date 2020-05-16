@@ -1,40 +1,19 @@
-{% extends 'main.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'main.html' %} {% load static %} {% block content %}
 <div class="row">
-    <div class="col-lg-4">
-        <img class="thumbnail" src="{% static 'images/placeholder.png' %}" alt="">
-        <div class="box-element product">
-            <h6><strong>Product</strong></h6>
-            <hr>
+  {% for product in products %}
+  <div class="col-lg-4">
+    <img class="thumbnail" src="{{product.imageURL}}" alt="" />
+    <div class="box-element product">
+      <h6><strong>{{product.name}}</strong></h6>
+      <hr />
 
-            <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
-            <a class="btn btn-outline" href="#">View</a>
-            <h4 style="display: inline-block; float: right"><strong>Ksh 2000</strong></h4>
-        </div>
+      <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+      <a class="btn btn-outline" href="#">View</a>
+      <h4 style="display: inline-block; float: right;">
+        <strong>Ksh {{product.price|floatformat:2}}</strong>
+      </h4>
     </div>
-    <div class="col-lg-4">
-        <img class="thumbnail" src="{% static 'images/placeholder.png' %}" alt="">
-        <div class="box-element product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-
-            <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
-            <a class="btn btn-outline" href="#">View</a>
-            <h4 style="display: inline-block; float: right"><strong>Ksh 100</strong></h4>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <img class="thumbnail" src="{% static 'images/placeholder.png' %}" alt="">
-        <div class="box-element product">
-            <h6><strong>Product</strong></h6>
-            <hr>
-
-            <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
-            <a class="btn btn-outline" href="#">View</a>
-            <h4 style="display: inline-block; float: right"><strong>Ksh 20</strong></h4>
-        </div>
-    </div>
+  </div>
+  {% endfor %}
 </div>
 {% endblock content %}
